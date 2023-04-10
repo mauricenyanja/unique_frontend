@@ -1,5 +1,12 @@
-<h1>
-  hello {{ this.payloadToRead?.seed }}<br />
+
+<p-toast ></p-toast>
+
+<div class="card">
+  <p-tabView>
+      <p-tabPanel header="My Account">
+          <div>
+       
+  <b>My Addrress :  {{ this.payloadToRead?.keyfile?.address}}</b><br />
 
   <p-dialog
     header="Enter Phone Number To Create A an Account"
@@ -18,7 +25,7 @@
       <button
         type="button"
         pButton
-        label="Create Account"
+        label="Open Account"
         class="dialog-button"
         icon="pi pi-check"
         (click)="onConfirm()"
@@ -34,31 +41,94 @@
     </div>
   </p-dialog>
 
-  <p-button
-    label="Create Account"
-    styleClass="p-button-info"
-    (onClick)="showDialog()"
-  ></p-button>
-  <br />
-  <br />
-  <br />
+  
 
-  <p-button
-    label="Create Collection"
-    styleClass="p-button-info"
-    (onClick)="showDialogCreateCollection()"
-  ></p-button>
-  <p-button
+  <div class="flex-auto center text-center align-content-center flex-wrap card-container">
+    <div class="flex-auto  w-20 align-items-center justify-content-center font-bold text-white m-3 px-3 py-3 border-round">
+      <p-button
+      label="Create New Account"
+      styleClass="p-button-info"
+      (onClick)="showDialog(true)"
+    ></p-button></div>
+    <div class="flex-auto  align-items-center justify-content-center  font-bold text-white m-3 px-3 py-3 border-round">
+      <p-button
+      label="Sign In Existing Account"
+      styleClass="p-button-info"
+     
+      (onClick)="showDialog(false)"
+    ></p-button>
+    </div>
+    <!-- <div class="  align-items-center justify-content-center  font-bold text-white m-3 px-3 py-3 border-round">    <p-button
+      label="Create Account"
+      styleClass="p-button-info"
+      (onClick)="showDialog()"
+    ></p-button></div> -->
+</div>
+
+          </div>
+      </p-tabPanel>
+      <p-tabPanel header="My Collections">
+          
+        <div class="p-field">
+          <label for="name">Name</label>
+          <input type="text" pInputText [(ngModel)]="name" name="name" id="name">
+        </div>
+        <div class="p-field">
+          <label for="description">Description</label>
+          <input type="text" pInputText [(ngModel)]="description" name="description" id="description">
+        </div>
+        <div class="p-field">
+          <label for="tokenPrefix">Token Prefix</label>
+          
+<input type="text" pInputText [(ngModel)]="tokenPrefix" name="tokenPrefix" id="tokenPrefix"/>
+        </div>
+        <p>
+            <p-button
+            label="Create Collection"
+            styleClass="p-button-info"
+            (onClick)="showDialogCreateCollection()"
+          ></p-button>    
+          </p>
+      </p-tabPanel>
+      <p-tabPanel header="Show QR Code">
+          <p>
+            <p-button (onClick)="onShowQRCode()" icon="pi pi-external-link" label="Show"></p-button>
+
+            <p-dialog header="SCAN TO GET YOUR NFT" [(visible)]="showQRCodeBoolean" [style]="{width: '25vw'}">
+              <qr-code style="text-align: center;" [value]="qrCode" size="400" errorCorrectionLevel="M"></qr-code>
+          </p-dialog>
+          </p>
+      </p-tabPanel>
+      <p-tabPanel header="Upload NFTs">
+        
+         
+      
+      
+     
+      
+      <p-dialog
+      header="Enter Image For NFT"
+      [(visible)]="displayNFTDialog"
+      [modal]="true"
+    >
+      <div>
+        <div class="">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+       
+      </div>
+    </p-dialog>
+    <p-button
     label="Upload NFTs"
     styleClass="p-button-info"
     (onClick)="showDialogToUploadNFTs()"
   ></p-button>
 
-
-
-<div class="">
-  <input type="file" (change)="onFileSelected($event)" accept="image/*">
+    </p-tabPanel>
+  </p-tabView>
 </div>
+
+  
 
 
   <!-- <p-dialog

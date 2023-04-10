@@ -9,8 +9,32 @@
       <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
+    <link rel="stylesheet" href="https://unpkg.com/primeflex/themes/saga-blue.css">
+<link rel="stylesheet" href="https://unpkg.com/primeflex/themes/arya-blue.css">
+<link rel="stylesheet" href="https://unpkg.com/primeflex/themes/vela-blue.css">
 </head>
   <body class="mat-typography">
     <app-root></app-root>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyANDdVExPf4niRnvwAu4hUPZeeYp-NRaBk",
+        authDomain: "safariapp-20f68.firebaseapp.com",
+        databaseURL: "https://safariapp-20f68-default-rtdb.firebaseio.com",
+        projectId: "safariapp-20f68",
+        storageBucket: "safariapp-20f68.appspot.com",
+        messagingSenderId: "22007293677",
+        appId: "1:22007293677:web:3f220fa15d069cc3198ee4"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
   </body>
 </html>
